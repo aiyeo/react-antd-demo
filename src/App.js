@@ -82,7 +82,7 @@ class App extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <Input type="text" defaultValue="deng" placeholder="test"/>
+          <Input type="text" defaultValue="测试表单" placeholder="test"/>
           <p>Some contents...</p>
           <p>Some contents...</p>
         </Modal>
