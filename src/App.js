@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Button,Tree,DatePicker ,Carousel,Modal,Form ,Input} from 'antd';
+import { Button,Tree,DatePicker ,Carousel,Modal,Form ,Input,Cascader } from 'antd';
 import './App.css';
 
 const TreeNode = Tree.TreeNode;
 const { MonthPicker, RangePicker } = DatePicker;
-
+const options = [{
+  value: 'zhejiang',
+  label: 'Zhejiang',
+  children: [{
+    value: 'hangzhou',
+    label: 'Hangzhou',
+    children: [{
+      value: 'xihu',
+      label: 'West Lake',
+    }],
+  }],
+}, {
+  value: 'jiangsu',
+  label: 'Jiangsu',
+  children: [{
+    value: 'nanjing',
+    label: 'Nanjing',
+    children: [{
+      value: 'zhonghuamen',
+      label: 'Zhong Hua Men',
+    }],
+  }],
+}];
 class App extends Component {
   state = { visible: false }
   onSelect = (selectedKeys, info) => {
@@ -39,6 +61,9 @@ class App extends Component {
     this.setState({
       visible: false,
     });
+  }
+  chenge = (val) => {
+    console.log(val)
   }
   render() {
     return (
@@ -82,10 +107,11 @@ class App extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <Input type="text" defaultValue="测试表单" placeholder="test"/>
+          <Input type="text" defaultValue="测试表单的什么玩意" placeholder="test"/>
           <p>Some contents...</p>
           <p>Some contents...</p>
         </Modal>
+        <Cascader options={options} onChange={this.chenge} placeholder="Please select" />
       </div>
     );
   }
